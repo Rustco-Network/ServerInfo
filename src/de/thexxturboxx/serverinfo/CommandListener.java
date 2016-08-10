@@ -18,7 +18,7 @@ public class CommandListener implements Listener, CommandExecutor {
 		this.plugin = plugin;
 	}
 	
-	@EventHandler(priority=EventPriority.HIGH)
+	@EventHandler(priority=EventPriority.HIGHEST)
 	public void onServerCommand(PlayerCommandPreprocessEvent e) {
 		String command = e.getMessage().split(" ")[0];
 		if(command.startsWith("bukkit:")) {
@@ -27,21 +27,21 @@ public class CommandListener implements Listener, CommandExecutor {
 		if(command.startsWith("spigot:")) {
 			command = command.replaceFirst("spigot:", "");
 		}
-		if((plugin.getConfig().getBoolean("Command.Plugins.Enable")) && ((command.equalsIgnoreCase("plugins")) ||
-				(command.equalsIgnoreCase("pl"))) && 
-				(!e.getPlayer().hasPermission("serverinfo.plugins"))) {
+		if(plugin.getConfig().getBoolean("Command.Plugins.Enable") && (command.equalsIgnoreCase("/plugins") ||
+				command.equalsIgnoreCase("/pl")) && 
+				(!e.getPlayer().hasPermission("serverinfo.plugins") && !e.getPlayer().isOp())) {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(plugin.getConfig().getString("Command.Plugins.Message"));
 		}
-		if((plugin.getConfig().getBoolean("Command.Version.Enable")) && ((command.equalsIgnoreCase("version")) ||
-				(command.equalsIgnoreCase("about")) ||
-				(command.equalsIgnoreCase("ver"))) && 
-				(!e.getPlayer().hasPermission("serverinfo.version"))) {
+		if(plugin.getConfig().getBoolean("Command.Version.Enable") && (command.equalsIgnoreCase("/version") ||
+				command.equalsIgnoreCase("/about") ||
+				command.equalsIgnoreCase("/ver")) && 
+				(!e.getPlayer().hasPermission("serverinfo.version") && !e.getPlayer().isOp())) {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(plugin.getConfig().getString("Command.Version.Message"));
 		}
-		if((plugin.getConfig().getBoolean("Command.Seed.Enable")) && (command.equalsIgnoreCase("seed")) && 
-				(!e.getPlayer().hasPermission("serverinfo.seed"))) {
+		if(plugin.getConfig().getBoolean("Command.Seed.Enable") && command.equalsIgnoreCase("/seed") && 
+				(!e.getPlayer().hasPermission("serverinfo.seed") && !e.getPlayer().isOp())) {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(plugin.getConfig().getString("Command.Seed.Message"));
 		}

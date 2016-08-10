@@ -26,7 +26,7 @@ public class ServerInfo extends JavaPlugin {
 				"Das zeigen wir dir nicht!" + ChatColor.WHITE + ", " + ChatColor.GREEN + "NEIN!");
 		initStandard("Command.Version.Message", ChatColor.WHITE + "Spigot 1.8.8 " +
 				ChatColor.MAGIC + "||" + ChatColor.AQUA + " ThexXTURBOXx und Sensetox-Edit " +
-				ChatColor.MAGIC + "||");
+				ChatColor.WHITE + ChatColor.MAGIC + "||");
 		initStandard("Command.Seed.Message", ChatColor.WHITE + "Seed: Den sagen wir dir nicht! :P");
 		initStandard("Command.Website.Enable", true);
 		initStandard("Command.Forum.Enable", true);

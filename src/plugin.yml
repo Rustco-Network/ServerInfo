@@ -2,3 +2,12 @@ name: ServerInfo
 main: de.thexxturboxx.serverinfo.ServerInfo
 version: 1.0.0
 author: ThexXTURBOXx
+commands:
+    website:
+        description: Zeigt die Webseite an
+    homepage:
+        description: Zeigt die Webseite an
+    forum:
+        description: Zeigt das Forum an
+    support:
+        description: Zeigt die Support-Email-Adressen an
