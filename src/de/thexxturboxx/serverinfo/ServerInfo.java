@@ -60,6 +60,7 @@ public class ServerInfo extends JavaPlugin {
 	public void initStandard(String key, Object standardValue) {
 		if(!getConfig().isSet(key)) {
 			getConfig().set(key, standardValue);
+			saveConfig();
 		}
 	}
 	
